@@ -13,7 +13,6 @@ export class BooksService {
   ) {}
 
   async getBooks(): Promise<BookDto[]> {
-    // return this.bookRepository.find();
-    return [];
+    return this.bookRepository.find();
   }
 }
