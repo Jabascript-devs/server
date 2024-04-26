@@ -6,7 +6,7 @@ export class Author {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ name: 'full_name', nullable: false, unique: true })
   fullName: string;
 
   @OneToMany(() => Book, (book) => book.author)
