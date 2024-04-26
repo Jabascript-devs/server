@@ -24,7 +24,7 @@ export class Book {
   @Column({ type: 'float' })
   deposit: number;
 
-  @Column({ type: 'float', nullable: false })
+  @Column({ name: 'day_price', type: 'float', nullable: false })
   dayPrice: number;
 
   @Column()
@@ -33,7 +33,7 @@ export class Book {
   @Column({ nullable: false })
   available: boolean;
 
-  @Column({ nullable: false, type: 'enum', enum: bookState })
+  @Column({ name: 'state', nullable: false, type: 'enum', enum: bookState })
   bookState: bookState;
 
   @ManyToOne(() => Author, (author) => author.book, {

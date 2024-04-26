@@ -11,16 +11,21 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ name: 'full_name', nullable: false, unique: true })
   fullName: string;
 
   @Column({ nullable: false, unique: true })
   address: string;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ name: 'phone_number', nullable: false, unique: true })
   phoneNumber: string;
 
-  @Column({ nullable: false, type: 'enum', enum: userCategory })
+  @Column({
+    name: 'category',
+    nullable: false,
+    type: 'enum',
+    enum: userCategory,
+  })
   userCategory: userCategory;
 
   @OneToMany(() => Order, (order) => order.user)
