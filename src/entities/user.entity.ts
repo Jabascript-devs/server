@@ -22,7 +22,7 @@ export class User {
 
   @Column({
     name: 'category',
-    nullable: false,
+    nullable: true,
     type: 'enum',
     enum: userCategory,
   })
