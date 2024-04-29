@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { Author } from './author.entity';
 import { Order } from './order.entity';
@@ -18,8 +19,11 @@ export class Book {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ nullable: false })
   name: string;
+
+  @Column({ nullable: false })
+  image: string;
 
   @Column({ type: 'float' })
   deposit: number;
@@ -38,7 +42,9 @@ export class Book {
 
   @ManyToOne(() => Author, (author) => author.book, {
     nullable: false,
+    eager: true,
   })
+  @JoinColumn({ name: 'authorId', referencedColumnName: 'id' })
   author: Author;
 
   @OneToMany(() => Order, (order) => order.book)
