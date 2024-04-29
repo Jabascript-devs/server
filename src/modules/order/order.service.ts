@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
-import { CreateOrderDto } from './dto/create-order.dto';
-import { UpdateOrderDto } from './dto/update-order.dto';
+import { OrderDto } from './dto/order.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Order } from '../../entities/order.entity';
@@ -13,23 +11,23 @@ export class OrderService {
     private orderRepository: Repository<Order>,
   ) {}
 
-  create(createOrderDto: CreateOrderDto) {
-    return 'This action adds a new order';
+  create(createOrderDto: OrderDto) {
+    return this.orderRepository.insert(createOrderDto);
   }
 
   findAll() {
-    return `This action returns all order`;
+    return this.orderRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} order`;
+    return this.orderRepository.findOneBy({ id });
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  update(id: number, updateOrderDto: OrderDto) {
+    return this.orderRepository.update({ id }, updateOrderDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} order`;
+    return this.orderRepository.delete({ id });
   }
 }

@@ -1,4 +1,4 @@
-INSERT INTO author (id, full_name) VALUES
+INSERT INTO `author` (id, full_name) VALUES
 (default, 'Sarah Johnson'),
 (default, 'David Smith'),
 (default, 'Emily Brown'),
@@ -20,7 +20,7 @@ INSERT INTO author (id, full_name) VALUES
 (default, 'Amelia Scott'),
 (default, 'Benjamin Green');
 
-INSERT INTO book (id, authorId, name, deposit, day_price, discount, available, state, image) VALUES
+INSERT INTO `book` (id, authorId, name, deposit, day_price, discount, available, state, image) VALUES
 (default, 1, 'The Lost City', 300, 22, 0, true, 1, ''),
 (default, 1, 'Echoes of the Past', 320, 21, 0, true, 1, ''),
 (default, 2, 'Into the Wild', 520, 46, 15, true, 1, ''),
@@ -61,3 +61,17 @@ INSERT INTO book (id, authorId, name, deposit, day_price, discount, available, s
 (default, 19, 'The Hidden Path', 320, 30, 0, true, 1, ''),
 (default, 20, 'The Lost Treasure', 200, 23, 0, true, 1, ''),
 (default, 20, 'Echoes of the Past', 500, 24, 10, true, 1, '');
+
+INSERT INTO `user` (id, full_name, address, phone_number, category) VALUES
+(default, 'Sophia Adams', 'Maple Avenue', '555-123-4567', null),
+(default, 'Elijah Carter', 'Spring Avenue', '555-115-8967', 1),
+(default, 'Ava Patel', 'Elm Street', '555-213-8385', 2),
+(default, 'Isabella Garcia', 'Pine Street', '555-454-2388', 2),
+(default, 'Mason Baker', 'Willow Lane', '555-788-6569', null);
+
+INSERT INTO `order` (id, date, bookId, userId) VALUES
+(default, '22-04-2024', 1, 3),
+(default, '25-10-2023', 2, 3),
+(default, '12-07-2023', 5, 5),
+(default, '05-11-2022', 7, 1),
+(default, '11-11-2021', 1, 2);
