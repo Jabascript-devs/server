@@ -12,7 +12,23 @@ export class BooksService {
     private bookRepository: Repository<Book>,
   ) {}
 
-  async getBooks(): Promise<BookDto[]> {
+  create(createBookDto: BookDto) {
+    return this.bookRepository.insert(createBookDto);
+  }
+
+  findAll() {
     return this.bookRepository.find();
+  }
+
+  findOne(id: number) {
+    return this.bookRepository.findOneBy({ id });
+  }
+
+  update(id: number, updateBookDto: BookDto) {
+    return this.bookRepository.update({ id }, updateBookDto);
+  }
+
+  remove(id: number) {
+    return this.bookRepository.delete({ id });
   }
 }
