@@ -62,12 +62,12 @@ INSERT INTO `book` (id, authorId, name, deposit, day_price, discount, available,
 (default, 20, 'The Lost Treasure', 200, 23, 0, true, 1, ''),
 (default, 20, 'Echoes of the Past', 500, 24, 10, true, 1, '');
 
-INSERT INTO `user` (id, full_name, address, phone_number, category) VALUES
-(default, 'Sophia Adams', 'Maple Avenue', '555-123-4567', null),
-(default, 'Elijah Carter', 'Spring Avenue', '555-115-8967', 1),
-(default, 'Ava Patel', 'Elm Street', '555-213-8385', 2),
-(default, 'Isabella Garcia', 'Pine Street', '555-454-2388', 2),
-(default, 'Mason Baker', 'Willow Lane', '555-788-6569', null);
+INSERT INTO `user` (id, full_name, balance, address, phone_number, category) VALUES
+(default, 'Sophia Adams', 13.5, 'Maple Avenue', '555-123-4567', null),
+(default, 'Elijah Carter', 11, 'Spring Avenue', '555-115-8967', 1),
+(default, 'Ava Patel', 34, 'Elm Street', '555-213-8385', 2),
+(default, 'Isabella Garcia', 45.4, 'Pine Street', '555-454-2388', 2),
+(default, 'Mason Baker', 34.5, 'Willow Lane', '555-788-6569', null);
 
 INSERT INTO `order` (id, date, bookId, userId) VALUES
 (default, '22-04-2024', 1, 3),

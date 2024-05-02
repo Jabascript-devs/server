@@ -18,11 +18,15 @@ export class Order {
 
   @ManyToOne(() => Book, (book) => book.order, {
     nullable: false,
+    eager: true,
   })
   @JoinColumn({ name: 'bookId', referencedColumnName: 'id' })
   book: Book;
 
-  @ManyToOne(() => User, (user) => user.order, { nullable: false })
+  @ManyToOne(() => User, (user) => user.order, {
+    nullable: false,
+    eager: true,
+  })
   @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   user: User;
 }
