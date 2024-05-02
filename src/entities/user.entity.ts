@@ -14,6 +14,9 @@ export class User {
   @Column({ name: 'full_name', nullable: false, unique: true })
   fullName: string;
 
+  @Column({ name: 'balance', type: 'float', nullable: true, default: 0.0 })
+  balance: number;
+
   @Column({ nullable: false, unique: true })
   address: string;
 
