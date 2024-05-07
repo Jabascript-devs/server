@@ -20,7 +20,7 @@ INSERT INTO `author` (id, full_name) VALUES
 (default, 'Amelia Scott'),
 (default, 'Benjamin Green');
 
-INSERT INTO `book` (id, authorId, name, deposit, day_price, discount, available, state, image) VALUES
+INSERT INTO `book` (id, authorId, name, image, deposit, day_price, discount, available, state) VALUES
 (default, 1, 'The Lost City', 'book1', 300, 22, 0, true, 1, ''),
 (default, 1, 'Echoes of the Past', 'book1', 320, 21, 0, true, 1, ''),
 (default, 2, 'Into the Wild', 'book2', 520, 46, 15, true, 1, ''),
