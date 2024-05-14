@@ -11,5 +11,6 @@ import { Order } from '../../entities/order.entity';
   imports: [TypeOrmModule.forFeature([Book, Author, Order])],
   controllers: [BooksController],
   providers: [BooksService],
+  exports: [BooksService],
 })
 export class BooksModule {}
