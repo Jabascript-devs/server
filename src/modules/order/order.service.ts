@@ -11,6 +11,7 @@ import { Repository } from 'typeorm';
 import { Order } from '../../entities/order.entity';
 import { UserService } from '../user/user.service';
 import { BookService } from '../book/book.service';
+import { bookState } from '../../entities/book.entity';
 
 @Injectable()
 export class OrderService {
@@ -72,16 +73,25 @@ export class OrderService {
 
     if (currentOrder.dateReturned == null) {
       currentBook.available = true;
-      await this.bookService.update(bookId, currentBook);
 
       const daysToPay = daysBetweenDates(
         currentOrder.dateTaken,
         updateOrderDto.dateReturned,
       );
-      const minusBalance = daysToPay * currentBook.dayPrice;
+      let minusBalance = daysToPay * currentBook.dayPrice;
+
+      if (updateOrderDto.state == 'good') {
+        currentBook.bookState = bookState.good;
+      } else if (updateOrderDto.state == 'bad') {
+        currentBook.bookState = bookState.bad;
+        minusBalance += 100;
+      }
 
       currentUser.balance -= minusBalance;
       await this.userService.update(userId, currentUser);
+      await this.bookService.update(bookId, currentBook);
+
+      delete updateOrderDto.state;
 
       return this.orderRepository.update({ id }, updateOrderDto);
     }

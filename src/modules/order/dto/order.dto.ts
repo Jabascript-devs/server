@@ -16,4 +16,6 @@ export class OrderDto {
   book: Book;
 
   user: User;
+
+  state?: string;
 }
