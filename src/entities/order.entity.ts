@@ -13,8 +13,11 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  date: string;
+  @Column({ name: 'date taken' })
+  dateTaken: string;
+
+  @Column({ name: 'date returned', nullable: true })
+  dateReturned?: string;
 
   @ManyToOne(() => Book, (book) => book.order, {
     nullable: false,

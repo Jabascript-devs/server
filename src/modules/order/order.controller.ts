@@ -15,8 +15,8 @@ export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Post()
-  create(@Body() createOrderDto: OrderDto) {
-    return this.orderService.create(createOrderDto);
+  async create(@Body() createOrderDto: OrderDto) {
+    return await this.orderService.create(createOrderDto);
   }
 
   @Get()
