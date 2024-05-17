@@ -29,12 +29,16 @@ export class OrderService {
     const user = await this.userService.findOne(userId);
     const book = await this.bookService.findOne(bookId);
 
-    console.log(book);
     if (book.available === true) {
       const deposit = Number(book.deposit);
       let discount = Number(book.discount);
 
-      user.userCategory == 'student' || 'pensioner' ? (discount += 10) : null;
+      if (
+        user.userCategory === 'student' ||
+        user.userCategory === 'pensioner'
+      ) {
+        discount += 10;
+      }
 
       user.balance = user.balance - deposit + discount;
       await this.userService.update(userId, user);
