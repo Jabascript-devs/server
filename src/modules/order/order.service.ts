@@ -29,13 +29,12 @@ export class OrderService {
     const user = await this.userService.findOne(userId);
     const book = await this.bookService.findOne(bookId);
 
+    console.log(book);
     if (book.available === true) {
       const deposit = Number(book.deposit);
       let discount = Number(book.discount);
 
-      user.userCategory == 'student' || 'pensioner'
-        ? (discount += 10)
-        : discount;
+      user.userCategory == 'student' || 'pensioner' ? (discount += 10) : null;
 
       user.balance = user.balance - deposit + discount;
       await this.userService.update(userId, user);
@@ -60,10 +59,10 @@ export class OrderService {
   }
 
   async update(id: number, updateOrderDto: OrderDto) {
-    const bookId = Number(updateOrderDto.book);
-    const userId = Number(updateOrderDto.user);
-
     const currentOrder = await this.orderRepository.findOneBy({ id });
+
+    const bookId = Number(currentOrder.book.id);
+    const userId = Number(currentOrder.user.id);
     const currentBook = await this.bookService.findOne(bookId);
     const currentUser = await this.userService.findOne(userId);
 
@@ -72,7 +71,7 @@ export class OrderService {
       await this.bookService.update(bookId, currentBook);
 
       const daysToPay = daysBetweenDates(
-        updateOrderDto.dateTaken,
+        currentOrder.dateTaken,
         updateOrderDto.dateReturned,
       );
       const minusBalance = daysToPay * currentBook.dayPrice;
