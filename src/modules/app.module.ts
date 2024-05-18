@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-import { BooksModule } from './books/books.module';
+import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
 import { AuthorModule } from './author/author.module';
 import { OrderModule } from './order/order.module';
@@ -24,7 +24,7 @@ import { OrderModule } from './order/order.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    BooksModule,
+    BookModule,
     UserModule,
     AuthorModule,
     OrderModule,

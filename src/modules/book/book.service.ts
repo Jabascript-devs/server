@@ -1,15 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { BookDto } from './dto/book.dto';
 import { Book } from '../../entities/book.entity';
+import { OrderService } from '../order/order.service';
 
 @Injectable()
-export class BooksService {
+export class BookService {
   constructor(
     @InjectRepository(Book)
     private bookRepository: Repository<Book>,
+    @Inject(forwardRef(() => OrderService))
+    private orderService: OrderService,
   ) {}
 
   create(createBookDto: BookDto) {
@@ -28,7 +31,8 @@ export class BooksService {
     return this.bookRepository.update({ id }, updateBookDto);
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    await this.orderService.removeByBook(id);
     return this.bookRepository.delete({ id });
   }
 }
