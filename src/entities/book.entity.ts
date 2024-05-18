@@ -22,6 +22,9 @@ export class Book {
   @Column({ nullable: false })
   name: string;
 
+  @Column()
+  genre: string;
+
   @Column({ nullable: false })
   image: string;
 

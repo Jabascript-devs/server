@@ -8,15 +8,15 @@ import {
 import { Book } from './book.entity';
 import { User } from './user.entity';
 
-@Entity('order')
+@Entity('user_order')
 export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'date taken' })
+  @Column({ name: 'date_taken' })
   dateTaken: string;
 
-  @Column({ name: 'date returned', nullable: true })
+  @Column({ name: 'date_returned', nullable: true })
   dateReturned?: string;
 
   @ManyToOne(() => Book, (book) => book.order, {
