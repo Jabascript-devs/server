@@ -24,6 +24,11 @@ export class OrderController {
     return this.orderService.findAll();
   }
 
+  @Get('/user/:id')
+  findAllUsersOrders(@Param('id') id: string) {
+    return this.orderService.findAllUsersOrders(+id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.orderService.findOne(+id);

@@ -9,6 +9,7 @@ import { OrderDto } from './dto/order.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Order } from '../../entities/order.entity';
+import { User } from '../../entities/user.entity';
 import { UserService } from '../user/user.service';
 import { BookService } from '../book/book.service';
 import { bookState } from '../../entities/book.entity';
@@ -18,6 +19,8 @@ export class OrderService {
   constructor(
     @InjectRepository(Order)
     private orderRepository: Repository<Order>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
     private userService: UserService,
     @Inject(forwardRef(() => BookService))
     private bookService: BookService,
@@ -57,6 +60,12 @@ export class OrderService {
 
   findAll() {
     return this.orderRepository.find();
+  }
+
+  findAllUsersOrders(userId: number) {
+    const user = this.userRepository.create();
+    user.id = userId;
+    return this.orderRepository.findBy({ user });
   }
 
   findOne(id: number) {
