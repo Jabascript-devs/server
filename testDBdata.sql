@@ -21,11 +21,11 @@ INSERT INTO `author` (id, full_name) VALUES
 (default, 'Benjamin Green');
 
 INSERT INTO `book` (id, authorId, name, image, deposit, day_price, discount, available, state, genre) VALUES
-(default, 1, 'The Lost City', 'book1', 300, 22, 0, false, 1, 'Adventure'),
-(default, 1, 'Echoes of the Past', 'book1', 320, 21, 0, false, 1, 'Historical Fiction'),
-(default, 2, 'Into the Wild', 'book2', 520, 46, 5, false, 1, 'Travel'),
-(default, 2, 'The Last Stand', 'book3', 300, 21, 0, false, 1, 'Thriller'),
-(default, 3, 'Secrets of the Forest', 'book1', 120, 2, 0, false, 1, 'Fantasy'),
+(default, 1, 'The Lost City', 'book1', 300, 22, 0, true, 1, 'Adventure'),
+(default, 1, 'Echoes of the Past', 'book1', 320, 21, 0, true, 1, 'Historical Fiction'),
+(default, 2, 'Into the Wild', 'book2', 520, 46, 5, true, 1, 'Travel'),
+(default, 2, 'The Last Stand', 'book3', 300, 21, 0, true, 1, 'Thriller'),
+(default, 3, 'Secrets of the Forest', 'book1', 120, 2, 0, true, 1, 'Fantasy'),
 (default, 3, 'Whispers in the Wind', 'book2', 200, 20, 1, true, 1, 'Romance'),
 (default, 4, 'The Dark Knight', 'book3', 500, 25, 0, true, 1, 'Mystery'),
 (default, 4, 'Shadows of Betrayal', 'book1', 500, 20, 0, true, 1, 'Thriller'),
@@ -69,7 +69,7 @@ INSERT INTO `user` (id, full_name, balance, address, phone_number, category) VAL
 (default, 'Isabella Garcia', 4500, 'Pine Street', '555-454-2388', 2),
 (default, 'Mason Baker', 3400, 'Willow Lane', '555-788-6569', null);
 
-insert into `order` (id, bookId, userId, date_taken, date_returned)
+insert into `user_order` (id, bookId, userId, date_taken, date_returned)
 values
     (default, 1, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
     (default, 2, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
