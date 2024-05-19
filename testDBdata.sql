@@ -69,10 +69,10 @@ INSERT INTO `user` (id, full_name, balance, address, phone_number, category) VAL
 (default, 'Isabella Garcia', 4500, 'Pine Street', '555-454-2388', 2),
 (default, 'Mason Baker', 3400, 'Willow Lane', '555-788-6569', null);
 
-insert into `user_order` (id, bookId, userId, date_taken, date_returned)
+insert into `user_order` (id, bookId, userId, date_taken, expected_date_return, date_returned)
 values
-    (default, 1, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
-    (default, 2, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
-    (default, 3, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
-    (default, 4, 3, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y')),
-    (default, 5, 4, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'));
+    (default, 1, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 2 DAY), '%d-%m-%Y')),
+    (default, 2, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 2 DAY), '%d-%m-%Y')),
+    (default, 3, 1, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 2 DAY), '%d-%m-%Y')),
+    (default, 4, 3, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 2 DAY), '%d-%m-%Y')),
+    (default, 5, 4, DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%d-%m-%Y'), DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 2 DAY), '%d-%m-%Y'));

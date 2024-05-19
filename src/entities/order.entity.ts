@@ -16,6 +16,9 @@ export class Order {
   @Column({ name: 'date_taken' })
   dateTaken: string;
 
+  @Column({ name: 'expected_date_return', nullable: true })
+  expectedDateReturn: string;
+
   @Column({ name: 'date_returned', nullable: true })
   dateReturned?: string;
 

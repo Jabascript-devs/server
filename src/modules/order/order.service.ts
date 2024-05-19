@@ -49,6 +49,7 @@ export class OrderService {
 
       book.available = false;
       await this.bookService.update(bookId, book);
+
       return this.orderRepository.insert(createOrderDto);
     } else {
       throw new HttpException(
@@ -96,6 +97,12 @@ export class OrderService {
         minusBalance += 100;
       }
 
+      const dateReturned = parseDate(updateOrderDto.dateReturned);
+      const expectedDateReturn = parseDate(currentOrder.expectedDateReturn);
+      if (dateReturned > expectedDateReturn) {
+        minusBalance += 1000;
+      }
+
       currentUser.balance -= minusBalance;
       await this.userService.update(userId, currentUser);
       await this.bookService.update(bookId, currentBook);
@@ -128,4 +135,9 @@ function daysBetweenDates(date1Str, date2Str) {
 
   // Convert the time difference from milliseconds to days
   return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+}
+
+function parseDate(dateStr) {
+  const [day, month, year] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day); // month is 0-based
 }
