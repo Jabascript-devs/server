@@ -33,6 +33,9 @@ $ npm run test:cov
 ## Database
 
 create your local database
+
 connect using .env file
+
 run app, so that NestJS will create tables
+
 insert data from testDBdata.sql
