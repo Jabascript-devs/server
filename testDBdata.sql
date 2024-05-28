@@ -63,11 +63,11 @@ INSERT INTO `book` (id, authorId, name, image, deposit, day_price, discount, ava
 (default, 20, 'Echoes of the Past', 'book1', 500, 24, 5, true, 1, 'Historical Fiction');
 
 INSERT INTO `user` (id, full_name, balance, address, phone_number, category) VALUES
-(default, 'Sophia Adams', 1000, 'Maple Avenue', '555-123-4567', null),
+(default, 'Sophia Adams', 1000, 'Maple Avenue', '555-123-4567', default),
 (default, 'Elijah Carter', 1100, 'Spring Avenue', '555-115-8967', 1),
 (default, 'Ava Patel', 3400, 'Elm Street', '555-213-8385', 2),
 (default, 'Isabella Garcia', 4500, 'Pine Street', '555-454-2388', 2),
-(default, 'Mason Baker', 3400, 'Willow Lane', '555-788-6569', null);
+(default, 'Mason Baker', 3400, 'Willow Lane', '555-788-6569', default);
 
 insert into `user_order` (id, bookId, userId, date_taken, expected_date_return, date_returned)
 values

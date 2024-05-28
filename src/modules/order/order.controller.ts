@@ -25,8 +25,9 @@ export class OrderController {
   }
 
   @Get('/user/:id')
-  findAllUsersOrders(@Param('id') id: string) {
-    return this.orderService.findAllUsersOrders(+id);
+  async findAllUsersOrders(@Param('id') id: string) {
+    const orders = await this.orderService.findAllUsersOrders(+id);
+    return orders.sort((a, b) => b.id - a.id);
   }
 
   @Get(':id')

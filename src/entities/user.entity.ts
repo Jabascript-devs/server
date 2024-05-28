@@ -4,6 +4,7 @@ import { Order } from './order.entity';
 export enum userCategory {
   student = 'student',
   pensioner = 'pensioner',
+  none = 'none',
 }
 
 @Entity('user')
@@ -28,6 +29,7 @@ export class User {
     nullable: true,
     type: 'enum',
     enum: userCategory,
+    default: userCategory.none,
   })
   userCategory: userCategory;
 
