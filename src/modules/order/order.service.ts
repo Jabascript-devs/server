@@ -84,6 +84,8 @@ export class OrderService {
     if (currentOrder.dateReturned == null) {
       currentBook.available = true;
 
+      const returnDeposit = currentBook.deposit;
+
       const daysToPay = daysBetweenDates(
         currentOrder.dateTaken,
         updateOrderDto.dateReturned,
@@ -104,6 +106,7 @@ export class OrderService {
       }
 
       currentUser.balance -= minusBalance;
+      currentUser.balance += returnDeposit;
       await this.userService.update(userId, currentUser);
       await this.bookService.update(bookId, currentBook);
 
